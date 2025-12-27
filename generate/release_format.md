@@ -6,9 +6,11 @@
 
 2. ❌ **REMOVED FILE/DIR**:
    <br>2.1. *sub-item 1*<br>
-   <br>2.2. *sub-item 2*
-
+   2.2. *sub-item 2*
 ---
 3. 🆕 **NEW FILE/DIR**:
-   <br>3.1. *hello*<br>
-   <br>3.2. *hello*<br>
+   <br>3.1. *hello*
+   <br>3.2. *hello*
+---
+4. **TLDR**:  
+*some text in TLDR section (will be realized by one of known mine AI services)*
