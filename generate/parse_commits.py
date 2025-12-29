@@ -1,10 +1,24 @@
 import subprocess
 from shutil import which
+from loguru import logger
+from typing import cast
 
-GIT_PATH = which("git")
+
+GIT_PATH = cast(str, which("git"))
+
+if GIT_PATH is None:
+    logger.critical("Git isnt define, install it!")
+    raise RuntimeError("git not found in PATH")
+
+GIT_PATH = str(GIT_PATH)
 
 
-def last_tag():
+def write_to_file(content: str) -> None:
+    with open("release.md", "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def last_tag() -> str:
     subprocess.run([GIT_PATH, "fetch", "--tags"], check=True)
     result = subprocess.run(
         [GIT_PATH, "describe", "--tags", "--abbrev=0"],
