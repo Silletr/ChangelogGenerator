@@ -22,8 +22,8 @@ Your task is to create a concise TLDR section in Markdown format that summarizes
     *   Friendly, informal, and developer-oriented tone.
     *   Use emoji sparingly and only when they naturally fit the context.
     *   Do not repeat section titles.
-    *   Ignore empty sections (e.g., `[Something] (empty)` - case-insensitive).
+    *   Ignore empty sections (e.g., `[Something] (empty - you need ignore this)` - case-insensitive).
     *   Avoid phrases like "awesome", "rocking", "breeze", "we got this".
     *   This is a solo developer project. Always use "I" or neutral phrasing, never "we", "our team", or similar.
     *   Keep it concise and direct – no unnecessary enthusiasm or filler text.
-*   **Output:** Generate *ONLY* the TLDR content, without any headers, introductory text, explain why you added something, or concluding remarks.
+*   **Output:** Generate *ONLY* the TLDR content, without any headers (#...######), introductory text, explain why you added something, or concluding remarks.

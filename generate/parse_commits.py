@@ -46,6 +46,8 @@ def generate_changelog():
         new_files_block = []
         changed_files_block = []
         deleted_files_block = []
+        moved_files_block = []
+
         sections = []
 
         for line in result.stdout.splitlines():
@@ -72,6 +74,13 @@ def generate_changelog():
             ):
                 deleted_files_block.append(line.strip())
 
+            elif (
+                "moved file/dir: " in line_lower
+                and "new" not in line_lower
+                and "changed" not in line_lower
+            ):
+                moved_files_block.append(line.strip())
+
         if new_files_block:
             sections.append("        🆕 **NEW FILE/DIR**:")
             for file_line in new_files_block:
@@ -90,12 +99,20 @@ def generate_changelog():
                 sections.append(f"                {file_line}")
             sections.append("        " + "-" * 12)
 
+        if moved_files_block:
+            sections.append("\n         ➡️ **MOVED FILE/DIR**:")
+            for file_line in moved_files_block:
+                sections.append(f"                {file_line}")
+            sections.append("        " + "-" * 12)
+
         if not sections:
             full_changelog = "        (No changes detected)"
+
         else:
             full_changelog = "\n".join(sections)
 
         print(full_changelog)
+
         return full_changelog
 
     except subprocess.CalledProcessError as e:
