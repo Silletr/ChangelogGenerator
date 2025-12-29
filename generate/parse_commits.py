@@ -28,52 +28,66 @@ def generate_changelog():
 
     try:
         result = subprocess.run(cmd, text=True, capture_output=True, check=True)
+
         new_files_block = []
         changed_files_block = []
         deleted_files_block = []
+        sections = []
 
         for line in result.stdout.splitlines():
+            line_lower = line.lower().strip()
+
             if (
-                ("new file/dir: " in line.lower())
-                and ("changed file/dir: " not in line.lower())
-                and ("deleted file/dir: " not in line.lower())
+                "new file/dir:" in line_lower
+                and "changed" not in line_lower
+                and "deleted" not in line_lower
             ):
                 new_files_block.append(line.strip())
 
-            if (
-                ("changed file/dir: " in line.lower())
-                and ("new file/dir: " not in line.lower())
-                and ("deleted file/dir: " not in line.lower())
+            elif (
+                "changed file/dir:" in line_lower
+                and "new" not in line_lower
+                and "deleted" not in line_lower
             ):
                 changed_files_block.append(line.strip())
 
-            if (
-                ("deleted file/dir: " in line.lower())
-                and ("changed file/dir: " not in line.lower())
-                and ("new file/dir: " not in line.lower())
+            elif (
+                "deleted file/dir:" in line_lower
+                and "new" not in line_lower
+                and "changed" not in line_lower
             ):
                 deleted_files_block.append(line.strip())
 
         if new_files_block:
-            print("\tNEW FILE/DIR:")
+            sections.append("        🆕 **NEW FILE/DIR**:")
             for file_line in new_files_block:
-                print(f"\t\t{file_line}")
-            print("\t" + "-" * 12 + "\n")
+                sections.append(f"                {file_line}")
+            sections.append("        " + "-" * 12)
 
         if changed_files_block:
-            print("\tCHANGED FILE/DIR:")
+            sections.append("\n        🗒️ **CHANGED FILE/DIR**:")
             for file_line in changed_files_block:
-                print(f"\t\t{file_line}")
-            print("\t" + "-" * 12 + "\n")
+                sections.append(f"                {file_line}")
+            sections.append("        " + "-" * 12)
 
         if deleted_files_block:
-            print("\tDELETED FILE/DIR:")
+            sections.append("\n        ❌ **REMOVED FILE/DIR**:")
             for file_line in deleted_files_block:
-                print(f"\t\t{file_line}")
-            print("\t" + "-" * 12 + "\n")
+                sections.append(f"                {file_line}")
+            sections.append("        " + "-" * 12)
+
+        if not sections:
+            full_changelog = "        (No changes detected)"
+        else:
+            full_changelog = "\n".join(sections)
+
+        print(full_changelog)
+        return full_changelog
 
     except subprocess.CalledProcessError as e:
-        print(f"❌ Git error: {e}")
+        error_msg = f"❌ Git error: {e}"
+        print(error_msg)
+        return error_msg
 
 
 if __name__ == "__main__":

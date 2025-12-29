@@ -17,11 +17,13 @@ Your task is to create a concise TLDR section in Markdown format that summarizes
     *   Focus on the *user/developer benefit* of each change. Explain *what* changed and *why* it matters.
     *   Be concise and informative.
     *   Ignore `<- By {user}` section, only if it not Silletr or Deepsource bots.
+    *   Do not invent or assume any technologies, features, or benefits not explicitly present in the changelog (e.g., no React, API, UI if not mentioned).
 *   **Style:**
     *   Friendly, informal, and developer-oriented tone.
     *   Use emoji sparingly and only when they naturally fit the context.
     *   Do not repeat section titles.
     *   Ignore empty sections (e.g., `[Something] (empty)` - case-insensitive).
+    *   Avoid phrases like "awesome", "rocking", "breeze", "we got this".
     *   This is a solo developer project. Always use "I" or neutral phrasing, never "we", "our team", or similar.
     *   Keep it concise and direct – no unnecessary enthusiasm or filler text.
-*   **Output:** Generate *only* the TLDR content, without any headers, introductory text, or concluding remarks.
+*   **Output:** Generate *ONLY* the TLDR content, without any headers, introductory text, explain why you added something, or concluding remarks.
