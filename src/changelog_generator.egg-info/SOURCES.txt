@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/changelog_gen/__init__.py
+src/changelog_gen/cli.py
+src/changelog_gen/generator.py
+src/changelog_gen/parse_commits.py
+src/changelog_generator.egg-info/PKG-INFO
+src/changelog_generator.egg-info/SOURCES.txt
+src/changelog_generator.egg-info/dependency_links.txt
+src/changelog_generator.egg-info/entry_points.txt
+src/changelog_generator.egg-info/requires.txt
+src/changelog_generator.egg-info/top_level.txt
+tests/test_generator.py

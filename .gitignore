@@ -1,5 +1,9 @@
 .ipynb_checkpoints/
 generate/__pycache__/
+# FOR MARKDOWN LINTERS (markdownlint + prettier)
 node_modules/
 package-lock.json
 package.json
+
+# RELEASE FILE
+generate/release.md

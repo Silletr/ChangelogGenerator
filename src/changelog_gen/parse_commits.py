@@ -13,8 +13,9 @@ if GIT_PATH is None:
 GIT_PATH = str(GIT_PATH)
 
 
-def write_to_file(content: str) -> None:
-    with open("release.md", "w", encoding="utf-8") as f:
+def write_to_file(content: str, output_file: str = "release.md") -> None:
+    """Write content to specified output file."""
+    with open(output_file, "w", encoding="utf-8") as f:
         f.write(content)
 
 
