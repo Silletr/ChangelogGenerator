@@ -1,4 +1,6 @@
 .ipynb_checkpoints/
+src/changelog_gen/__pycache__/
+src/changelog_generator.egg-info/
 generate/__pycache__/
 # FOR MARKDOWN LINTERS (markdownlint + prettier)
 node_modules/
